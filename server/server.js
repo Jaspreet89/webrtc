@@ -2,9 +2,10 @@ var static = require('node-static');
 var http = require('http');
 var util = require('util');
 var file = new(static.Server)();
+var port = process.env.PORT || 8080;
 var app = http.createServer(function (req, res) {
   file.serve(req, res);
-}).listen(2013);
+}).listen(port);
 
 var io = require('socket.io').listen(app);
 
